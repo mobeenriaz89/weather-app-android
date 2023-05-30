@@ -1,0 +1,66 @@
+package com.mubeen.crud.OnBoarding
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import com.mubeen.crud.Activities.BaseActivity
+import com.mubeen.crud.Controllers.DataStoreController
+import com.mubeen.crud.Controllers.RealmController
+import com.mubeen.crud.Home.HomeActivity
+import com.mubeen.crud.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+class LoginActivity : BaseActivity() {
+
+    lateinit var et_email: EditText
+    lateinit var et_password: EditText
+    lateinit var btn_login: Button
+    lateinit var btn_signup: Button
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+        initViews()
+        setupClicks()
+    }
+
+    private fun initViews() {
+        et_email = findViewById(R.id.et_email)
+        et_password = findViewById(R.id.et_password)
+        btn_login = findViewById(R.id.btn_login)
+        btn_signup = findViewById(R.id.btn_signup)
+    }
+
+    private fun setupClicks() {
+        btn_login.setOnClickListener { login() }
+        btn_signup.setOnClickListener { redirectToSignUp() }
+    }
+
+    private fun login() {
+        val id = et_email.text.toString()
+        val password = et_password.text.toString()
+        val userExist = RealmController.getUser(id, password)
+        if (userExist != null) {
+            redirectToHome()
+            CoroutineScope(Dispatchers.IO).launch {
+                val store = DataStoreController(this@LoginActivity)
+                store.setLoggedIn(true)
+            }
+        }else
+            showErrorAlertDialog("Email ID or Password is wrong.")
+    }
+
+    private fun redirectToSignUp() {
+        startActivity(Intent(this, SignupActivity::class.java))
+    }
+
+    private fun redirectToHome() {
+        finishAffinity()
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+    }
+}
