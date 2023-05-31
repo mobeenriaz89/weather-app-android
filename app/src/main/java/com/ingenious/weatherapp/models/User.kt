@@ -1,4 +1,4 @@
-package com.mubeen.crud.Models
+package com.ingenious.weatherapp.models
 
 import io.realm.kotlin.types.RealmObject
 

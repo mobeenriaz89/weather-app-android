@@ -1,7 +1,7 @@
-package com.mubeen.crud.Application
+package com.ingenious.weatherapp.application
 
 import android.app.Application
-import com.mubeen.crud.Models.User
+import com.ingenious.weatherapp.models.User
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.log.LogLevel

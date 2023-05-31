@@ -1,10 +1,8 @@
-package com.mubeen.crud.Controllers
+package com.ingenious.weatherapp.controllers
 
-import com.mubeen.crud.Application.CrudApplication.Companion.realmInst
-import com.mubeen.crud.Models.User
+import com.ingenious.weatherapp.application.CrudApplication.Companion.realmInst
+import com.ingenious.weatherapp.models.User
 import io.realm.kotlin.ext.query
-import io.realm.kotlin.notifications.ResultsChange
-import kotlinx.coroutines.flow.Flow
 
 object RealmController {
 

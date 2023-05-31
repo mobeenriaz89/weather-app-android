@@ -1,4 +1,4 @@
-package com.mubeen.crud.Activities
+package com.ingenious.weatherapp.activities
 
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity

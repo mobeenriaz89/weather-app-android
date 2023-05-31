@@ -1,11 +1,11 @@
-package com.mubeen.crud.Activities
+package com.ingenious.weatherapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mubeen.crud.Controllers.DataStoreController
-import com.mubeen.crud.Home.HomeActivity
-import com.mubeen.crud.OnBoarding.LoginActivity
+import com.ingenious.weatherapp.controllers.DataStoreController
+import com.ingenious.weatherapp.home.HomeActivity
+import com.ingenious.weatherapp.onBoarding.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun redirectToHome() {
-        finishAffinity()
         val intent = Intent(this, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
+        finishAffinity()
     }
 
     private fun redirectToLogin() {

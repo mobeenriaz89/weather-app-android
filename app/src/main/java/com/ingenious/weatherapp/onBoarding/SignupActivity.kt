@@ -1,28 +1,29 @@
-package com.mubeen.crud.OnBoarding
+package com.ingenious.weatherapp.onBoarding
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import com.mubeen.crud.Activities.BaseActivity
-import com.mubeen.crud.Controllers.DataStoreController
-import com.mubeen.crud.Controllers.RealmController
-import com.mubeen.crud.Home.HomeActivity
-import com.mubeen.crud.R
+import com.ingenious.weatherapp.activities.BaseActivity
+import com.ingenious.weatherapp.controllers.DataStoreController
+import com.ingenious.weatherapp.controllers.RealmController
+import com.ingenious.weatherapp.home.HomeActivity
+import com.ingenious.weatherapp.models.User
+import com.ingenious.weatherapp.R
+import com.ingenious.weatherapp.utils.AppUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LoginActivity : BaseActivity() {
+class SignupActivity : BaseActivity() {
 
     lateinit var et_email: EditText
     lateinit var et_password: EditText
-    lateinit var btn_login: Button
     lateinit var btn_signup: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_signup)
         initViews()
         setupClicks()
     }
@@ -30,31 +31,26 @@ class LoginActivity : BaseActivity() {
     private fun initViews() {
         et_email = findViewById(R.id.et_email)
         et_password = findViewById(R.id.et_password)
-        btn_login = findViewById(R.id.btn_login)
         btn_signup = findViewById(R.id.btn_signup)
     }
 
     private fun setupClicks() {
-        btn_login.setOnClickListener { login() }
-        btn_signup.setOnClickListener { redirectToSignUp() }
+        btn_signup.setOnClickListener { signUp()}
     }
 
-    private fun login() {
-        val id = et_email.text.toString()
-        val password = et_password.text.toString()
-        val userExist = RealmController.getUser(id, password)
-        if (userExist != null) {
+    private fun signUp() {
+        var user = User()
+        user.id = et_email.text.toString()
+        user.password = et_password.text.toString()
+        if(AppUtils.isValidEmail(user.id)) {
+            RealmController.createUser(user)
             redirectToHome()
             CoroutineScope(Dispatchers.IO).launch {
-                val store = DataStoreController(this@LoginActivity)
+                val store = DataStoreController(this@SignupActivity)
                 store.setLoggedIn(true)
             }
         }else
-            showErrorAlertDialog("Email ID or Password is wrong.")
-    }
-
-    private fun redirectToSignUp() {
-        startActivity(Intent(this, SignupActivity::class.java))
+            showErrorAlertDialog("Enter valid Email ID")
     }
 
     private fun redirectToHome() {
@@ -63,4 +59,5 @@ class LoginActivity : BaseActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
     }
+
 }

@@ -46,6 +46,11 @@ dependencies {
     //REALM
     implementation 'io.realm.kotlin:library-base:1.8.0'
     //DATA STORE
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    //RETROFIT
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //GSON for retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //Glide for image loading
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
 }

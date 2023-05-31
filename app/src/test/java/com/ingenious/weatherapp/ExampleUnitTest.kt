@@ -1,4 +1,4 @@
-package com.mubeen.crud
+package com.ingenious.weatherapp
 
 import org.junit.Test
 
