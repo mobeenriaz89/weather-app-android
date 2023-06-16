@@ -8,10 +8,10 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
-    <color name="colorPrimary">#1B5E20</color>
-    <color name="colorPrimaryVariant">#3F51B5</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryVariant">#81D4FA</color>
     <color name="green_light">#A5D6A7</color>
-    <color name="colorSecondary">#0288D1</color>
-    <color name="colorSecondaryVariant">#005B9F</color>
+    <color name="colorSecondary">#ffffff</color>
+    <color name="colorSecondaryVariant">#ffffff</color>
     <color name="blue_light">#81D4FA</color>
 </resources>

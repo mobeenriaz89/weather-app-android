@@ -7,7 +7,7 @@ import android.widget.EditText
 import com.ingenious.weatherapp.activities.BaseActivity
 import com.ingenious.weatherapp.controllers.DataStoreController
 import com.ingenious.weatherapp.controllers.RealmController
-import com.ingenious.weatherapp.home.HomeActivity
+import com.ingenious.weatherapp.activities.HomeActivity
 import com.ingenious.weatherapp.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +19,7 @@ class LoginActivity : BaseActivity() {
     lateinit var et_password: EditText
     lateinit var btn_login: Button
     lateinit var btn_signup: Button
+    lateinit var btn_skip: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +33,13 @@ class LoginActivity : BaseActivity() {
         et_password = findViewById(R.id.et_password)
         btn_login = findViewById(R.id.btn_login)
         btn_signup = findViewById(R.id.btn_signup)
+        btn_skip = findViewById(R.id.btn_skip)
     }
 
     private fun setupClicks() {
         btn_login.setOnClickListener { login() }
         btn_signup.setOnClickListener { redirectToSignUp() }
+        btn_skip.setOnClickListener { redirectToHome() }
     }
 
     private fun login() {

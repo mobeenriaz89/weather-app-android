@@ -7,7 +7,7 @@ import android.widget.EditText
 import com.ingenious.weatherapp.activities.BaseActivity
 import com.ingenious.weatherapp.controllers.DataStoreController
 import com.ingenious.weatherapp.controllers.RealmController
-import com.ingenious.weatherapp.home.HomeActivity
+import com.ingenious.weatherapp.activities.HomeActivity
 import com.ingenious.weatherapp.models.User
 import com.ingenious.weatherapp.R
 import com.ingenious.weatherapp.utils.AppUtils

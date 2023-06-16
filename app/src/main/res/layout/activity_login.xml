@@ -52,20 +52,35 @@
         android:layout_height="60dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_signup"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="20dp"
-        android:text="Login"/>
+        android:text="Login"
+        android:backgroundTint="@color/colorPrimaryVariant"
+        />
 <Button
         android:id="@+id/btn_signup"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:textSize="20sp"
+    app:layout_constraintBottom_toTopOf="@+id/btn_skip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="20dp"
-        android:text="Signup"/>
+        android:text="Signup"
+    android:backgroundTint="@color/colorPrimaryVariant"
+    />
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:textSize="20sp"
+        android:backgroundTint="@color/colorPrimaryVariant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20dp"
+        android:text="Skip"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

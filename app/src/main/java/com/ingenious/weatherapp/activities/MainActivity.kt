@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ingenious.weatherapp.controllers.DataStoreController
-import com.ingenious.weatherapp.home.HomeActivity
 import com.ingenious.weatherapp.onBoarding.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

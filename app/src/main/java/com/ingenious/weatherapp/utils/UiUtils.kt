@@ -12,7 +12,7 @@ object UiUtils {
 
     fun loadImage(context: Context,path: String, view: ImageView){
         Glide
-            .with(context)
+            .with(context.applicationContext)
             .load(path)
             .centerCrop()
             .placeholder(R.mipmap.ic_launcher)

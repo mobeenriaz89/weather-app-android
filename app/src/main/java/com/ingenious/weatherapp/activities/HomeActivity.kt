@@ -1,11 +1,12 @@
-package com.ingenious.weatherapp.home
+package com.ingenious.weatherapp.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import com.ingenious.weatherapp.R
 import com.ingenious.weatherapp.controllers.DataStoreController
 import com.ingenious.weatherapp.models.responseModels.WeatherInfo
@@ -17,22 +18,28 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     lateinit var store: DataStoreController
 
     lateinit var tvTemp: TextView
     lateinit var tvCondition: TextView
     lateinit var imgWeather: ImageView
+    lateinit var btnReload: Button
+    lateinit var progressbar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         store = DataStoreController(this)
         initViews()
-        //UiUtils.loadImage(this,"https://developer.accuweather.com/sites/default/files/01-s.png",imgWeather)
+        setupClicks()
+    }
 
-
+    private fun setupClicks() {
+        btnReload.setOnClickListener{
+            getLocationKey()
+        }
     }
 
     override fun onResume() {
@@ -44,9 +51,14 @@ class HomeActivity : AppCompatActivity() {
         tvTemp = findViewById(R.id.tvTemp)
         tvCondition = findViewById(R.id.tvCondition)
         imgWeather = findViewById(R.id.imgWeather)
+        btnReload = findViewById(R.id.btnReload)
+        progressbar = findViewById(R.id.progressbar)
     }
 
     private fun getLocationKey() {
+        progressbar.visibility = View.VISIBLE
+        btnReload.visibility = View.INVISIBLE
+
         val locationKey = "258278" // will get it from Api later
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -62,8 +74,12 @@ class HomeActivity : AppCompatActivity() {
                 val response = service.getCurrentConditions()
                 Log.i("=Current Conditions=", response.toString())
                 populateViews(response)
+                progressbar.visibility = View.INVISIBLE
+                btnReload.visibility = View.VISIBLE
             }catch (e: Exception){
                 e.printStackTrace()
+                progressbar.visibility = View.INVISIBLE
+                btnReload.visibility = View.VISIBLE
             }
 
         }

@@ -55,5 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="20dp"
-        android:text="Signup"/>
+        android:text="Signup"
+        android:backgroundTint="@color/colorPrimaryVariant"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
